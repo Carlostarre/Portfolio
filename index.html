@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio - Carlos Tarre Villanueva</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="logo">
+  <img src="images/fotoperfilcarlos.jpg" alt="Foto de perfil de Carlos Tarré Villanueva" class="logo-img">
+ 
+</div>
+
+    <nav>
+      <a href="#hero">Inicio</a>
+      <a href="#about">Sobre mí</a>
+      <a href="#projects">Proyectos</a>
+      <a href="#skills">Habilidades</a>
+      <a href="#contact">Contacto</a>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+<section id="hero">
+  <div class="hero-container">
+    <div class="hero-text hero-box">
+      <h1>Sobre mí</h1>
+      
+      <p>Me llamo Carlos Tarré Villanueva, <strong>Técnico en Desarrollo de Aplicaciones Web</strong> con experiencia en <strong>programación, bases de datos</strong> y entornos tanto del lado del cliente como del servidor. Destaco por desarrollar <strong>aplicaciones bien estructuradas</strong>, aplicando <strong>buenas prácticas</strong> y <strong>metodologías ágiles</strong> para garantizar calidad y mantenibilidad.</p>
+
+      <p>Conocimientos en <strong>HTML, CSS, JavaScript, Java, Python y MySQL</strong>, además de experiencia en frameworks y herramientas como <strong>React, Bootstrap, Laravel y Git</strong>. Manejo con soltura <strong>Windows y Linux</strong>, y entornos de desarrollo como <strong>Visual Studio Code</strong>.</p>
+
+      <p>Me caracterizo por el <strong>compromiso, la responsabilidad y la atención al detalle</strong>. La <strong>capacidad de trabajo en equipo</strong>, la <strong>comunicación efectiva</strong> y la <strong>resolución de problemas</strong> me permiten integrarme con facilidad en proyectos colaborativos y afrontar nuevos retos con una actitud <strong>proactiva</strong>.</p>
+
+      <p>El objetivo es seguir creciendo como <strong>desarrollador web</strong>, creando <strong>soluciones innovadoras y de alto impacto</strong> que contribuyan al éxito de cada iniciativa en la que participo.</p>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+  <!-- Proyectos -->
+<section id="projects">
+  <h2>Proyectos</h2>
+  <div class="projects-grid">
+
+<!-- Proyecto 1: Página web Nike -->
+<div class="project-card">
+
+  <h3>Página Web Nike</h3>
+  <p>Sitio web inspirado en la marca <strong>Nike</strong>, desarrollado como práctica de <strong>frontend</strong> y <strong>backend</strong> completo. 
+     Incluye un diseño moderno, secciones interactivas y un <strong>sistema responsivo</strong> que se adapta a diferentes dispositivos. 
+     Además, cuenta con funcionalidades de usuario y administrador, carrito de compras y gestión de pedidos.</p>
+
+  <h4>Roles y funcionalidades</h4>
+  <ul>
+    <li><strong>Usuario:</strong> navegar productos, añadir al carrito, proceder a la compra, ver historial de pedidos.</li>
+    <li><strong>Administrador:</strong> añadir, editar y eliminar productos, ver pedidos de todos los usuarios.</li>
+    <li><strong>Autenticación:</strong> registro, login y control de roles con JWT.</li>
+    <li><strong>Carrito:</strong> sincronización entre frontend y backend, actualización de cantidades, eliminación de productos.</li>
+    <li><strong>Pedidos:</strong> creación de órdenes, seguimiento del estado y vaciado del carrito tras la compra.</li>
+    <li><strong>Perfil:</strong> edición de información personal y gestión de pedidos.</li>
+  </ul>
+
+  <h4>Tecnologías utilizadas</h4>
+  <ul>
+    <li><strong>HTML5</strong> → estructura semántica del sitio</li>
+    <li><strong>CSS3</strong> → estilos modernos, responsive design y animaciones</li>
+    <li><strong>JavaScript (ES6+)</strong> → interactividad en el frontend</li>
+    <li><strong>Angular</strong> → desarrollo de componentes reutilizables y SPA</li>
+    <li><strong>Node.js & npm</strong> → entorno de ejecución y gestión de dependencias</li>
+    <li><strong>Express.js</strong> → configuración del backend y API REST</li>
+    <li><strong>MySQL</strong> → gestión de base de datos y almacenamiento de usuarios/productos/pedidos</li>
+    <li><strong>Git & GitHub</strong> → control de versiones y repositorio</li>
+    <li><strong>Cypress</strong> → pruebas end-to-end para verificar funcionalidades</li>
+  </ul>
+
+  <h4>Cómo ejecutar el proyecto</h4>
+<ol>
+  <li><strong>Clonar el repositorio:</strong> <code>git clone https://github.com/Carlostarre/NikeCypress.git</code></li>
+  
+  <li><strong>Instalar dependencias:</strong>
+    <ul>
+      <li>Frontend (Angular - carpeta <code>pixar-web</code>): <code>npm install</code> y <code>npm install -g @angular/cli</code> si no tienes Angular CLI.</li>
+      <li>Backend (Node.js - carpeta <code>backend</code>): <code>npm install</code></li>
+    </ul>
+  </li>
+  
+  <li><strong>Configurar base de datos MySQL:</strong>
+    <ul>
+      <li>Abrir XAMPP y asegurarse de que MySQL esté iniciado.</li>
+      <li>Crear la base de datos: <code>CREATE DATABASE nike_store;</code></li>
+      <li>Crear las tablas correspondientes ejecutando el script SQL incluido en el proyecto:</li>
+      <pre>
+USE nike_store;
+
+-- Tabla de usuarios
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    isAdmin BOOLEAN DEFAULT 0,
+    createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Tabla de productos
+CREATE TABLE products (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    description TEXT,
+    price DECIMAL(10,2) NOT NULL,
+    stock INT DEFAULT 0,
+    image VARCHAR(255),
+    createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Tabla carrito
+CREATE TABLE cart (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    userId INT NOT NULL,
+    productId INT NOT NULL,
+    quantity INT DEFAULT 1,
+    FOREIGN KEY (userId) REFERENCES users(id) ON DELETE CASCADE,
+    FOREIGN KEY (productId) REFERENCES products(id) ON DELETE CASCADE
+);
+
+-- Tabla órdenes
+CREATE TABLE orders (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    userId INT NOT NULL,
+    status VARCHAR(50) DEFAULT 'Pending',
+    createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (userId) REFERENCES users(id)
+);
+
+-- Tabla items de órdenes
+CREATE TABLE order_items (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    orderId INT NOT NULL,
+    productId INT NOT NULL,
+    quantity INT DEFAULT 1,
+    FOREIGN KEY (orderId) REFERENCES orders(id) ON DELETE CASCADE,
+    FOREIGN KEY (productId) REFERENCES products(id) ON DELETE CASCADE
+);
+      </pre>
+    </ul>
+  </li>
+
+  <li><strong>Iniciar backend:</strong> <code>npm start</code> en la carpeta <code>backend</code>. Servidor disponible en <code>http://localhost:3000</code>.</li>
+  
+  <li><strong>Iniciar frontend:</strong> <code>ng serve</code> en la carpeta <code>pixar-web</code>. Abrir <code>http://localhost:4200</code> en el navegador.</li>
+  
+  <li><strong>Configurar usuario administrador:</strong>
+    <ul>
+      <li>Crear un usuario desde la web.</li>
+      <li>Modificarlo a administrador en la base de datos MySQL:
+        <code>UPDATE users SET isAdmin = 1 WHERE email = 'tu-email@example.com';</code>
+      </li>
+    </ul>
+  </li>
+</ol>
+
+
+<h4>Capturas de pantalla</h4>
+<div class="screenshots-vertical">
+  <img src="images/Inicio.jpg" alt="Pantalla de inicio" class="screenshot">
+  <img src="images/carrito.png" alt="Vista del carrito" class="screenshot">
+  <img src="images/panel admin.png" alt="Panel admin" class="screenshot">
+  <img src="images/historial pedidos.png" alt="Historial de pedidos" class="screenshot">
+  <img src="images/productos.png" alt="Productos disponibles" class="screenshot">
+  <img src="images/funcionalidad admin.png" alt="Funcionalidad admin: añadir/editar productos" class="screenshot">
+  <img src="images/factura.png" alt="Factura generada tras compra" class="screenshot">
+  
+</div>
+
+
+
+  <div class="project-links">
+    <a href="https://github.com/Carlostarre/Nike" target="_blank" class="btn-link">🔗 Ver en GitHub</a>
+  </div>
+</div>
+
+
+
+<!-- Sección para incluir en tu portfolio web -->
+<section id="projects">
+  <h2>Proyectos</h2>
+  <div class="projects-grid">
+
+    <!-- Proyecto: Aplicación de Gestión de CV -->
+    <div class="project-card">
+      <h3>📄 Aplicación de Gestión de CV y Portfolio</h3>
+      <p>Sistema web completo para la <strong>gestión de currículums vitae</strong> con autenticación segura 
+         y formularios dinámicos. Diseño moderno y responsive que se adapta a todos los dispositivos.</p>
+
+      <h4>Funcionalidades principales</h4>
+      <ul>
+        <li><strong>Autenticación:</strong> registro e inicio de sesión con JWT y validación segura</li>
+        <li><strong>Gestión de CV:</strong> crear y editar información personal, experiencia, educación, habilidades y proyectos</li>
+        <li><strong>Persistencia:</strong> almacenamiento seguro en MySQL con sistema de usuarios</li>
+        <li><strong>Responsive:</strong> diseño adaptado para móviles, tablets y escritorio</li>
+      </ul>
+
+      <h4>Tecnologías utilizadas</h4>
+      <ul>
+        <li><strong>React</strong> → biblioteca para interfaces de usuario interactivas y componentes reutilizables</li>
+        <li><strong>JavaScript (ES6+)</strong> → lógica del frontend y manejo de estado</li>
+        <li><strong>Tailwind CSS</strong> → framework utility-first para diseño moderno y responsive</li>
+        <li><strong>PHP</strong> → backend con API REST para gestión de datos</li>
+        <li><strong>MySQL</strong> → base de datos relacional para usuarios</li>
+        <li><strong>JWT</strong> → autenticación y autorización segura con tokens</li>
+        <li><strong>XAMPP</strong> → entorno de desarrollo local (Apache + MySQL + PHP)</li>
+        <li><strong>Vite</strong> → herramienta de build rápida para React</li>
+        <li><strong>Git & GitHub</strong> → control de versiones y repositorio</li>
+      </ul>
+
+      <h4>Cómo ejecutar el proyecto</h4>
+      <ol>
+        <li><strong>Clonar el repositorio:</strong> <code>git clone https://github.com/tu-usuario/cv-portfolio.git</code></li>
+        <li><strong>Configurar XAMPP:</strong>
+          <ul>
+            <li>Iniciar Apache y MySQL desde el panel de control de XAMPP</li>
+          </ul>
+        </li>
+        <li><strong>Crear base de datos MySQL:</strong>
+          <ul>
+            <li>Crear base de datos: <code>CREATE DATABASE cv;</code></li>
+            <li>Ejecutar el script SQL incluido en el proyecto.</li>
+          </ul>
+        </li>
+        <li><strong>Configurar backend:</strong>
+          <ul>
+            <li>Copiar carpeta <code>api</code> a <code>C:\xampp\htdocs\PracticaCV-main\api\</code></li>
+            <li>Verificar credenciales de MySQL en <code>api.php</code> (usuario: root, contraseña: vacía por defecto)</li>
+          </ul>
+        </li>
+        <li><strong>Instalar dependencias del frontend:</strong> <code>npm install</code> en la carpeta del proyecto</li>
+        <li><strong>Iniciar servidor de desarrollo:</strong> <code>npm run dev</code>. La aplicación estará disponible en <code>http://localhost:5173</code></li>
+        <li><strong>Probar la aplicación:</strong>
+          <ul>
+            <li>Registrar un nuevo usuario desde la interfaz web</li>
+            <li>Iniciar sesión con las credenciales creadas</li>
+            <li>Completar el formulario de CV con tu información</li>
+            <li>Visualizar tu portfolio profesional</li>
+          </ul>
+        </li>
+      </ol>
+
+      <h4>Características destacadas</h4>
+      <ul>
+        <li>🎨 <strong>Diseño moderno:</strong> paleta de colores navy/cyan profesional con Tailwind CSS</li>
+        <li>🔐 <strong>Seguridad:</strong> autenticación JWT, validación de formularios y protección de rutas</li>
+        <li>📱 <strong>Responsive:</strong> adaptado para todos los dispositivos</li>
+        <li>⚡ <strong>Performance:</strong> build optimizado con Vite para carga rápida</li>
+        <li>🧩 <strong>Modular:</strong> componentes React reutilizables y mantenibles</li>
+      </ul>
+
+      <div class="project-links">
+        <a href="https://github.com/tu-usuario/cv-portfolio" target="_blank" class="btn-link">🔗 Ver en GitHub</a>
+      </div>
+
+      <!-- Sección de capturas de pantalla -->
+      <h4>Capturas de pantalla</h4>
+      <div class="screenshots-vertical">
+        <img src="images/registro.png" alt="Foto de perfil" class="screenshot">
+        <img src="images/iniciosesion.png" alt="Edición de CV" class="screenshot">
+        <img src="images/datos.png" alt="Visualización del portfolio" class="screenshot">
+      </div>
+
+      <!-- Mejoras propuestas dentro del mismo recuadro -->
+      <h4>Mejoras propuestas</h4>
+      <p>Estas son funcionalidades que se podrían añadir para hacer la aplicación más completa y atractiva:</p>
+      <ul>
+        <li><strong>Foto de perfil:</strong> permitir que el usuario suba y visualice su imagen en el CV y en el portfolio.</li>
+        <li><strong>Campos adicionales:</strong> añadir teléfono, dirección, LinkedIn, GitHub, habilidades extra y cualquier otro campo personalizado que el usuario desee mostrar.</li>
+        <li><strong>Capturas de pantalla de proyectos:</strong> permitir subir imágenes de proyectos o secciones del CV para mostrar visualmente el trabajo realizado.</li>
+        <li><strong>Vista previa del CV:</strong> generar una sección de previsualización que muestre cómo se verá el CV final antes de guardar.</li>
+        <li><strong>Gestión de archivos:</strong> permitir cargar varios archivos multimedia o PDFs para enriquecer el portfolio.</li>
+        <li><strong>Optimización visual:</strong> mostrar las fotos y capturas de pantalla con un diseño responsive y con soporte para miniaturas y carruseles.</li>
+      </ul>
+
+    </div>
+  </div>
+</section>
+
+
+
+
+  <!-- Habilidades -->
+<!-- Habilidades -->
+<section id="skills">
+  <h2>Habilidades</h2>
+  <div class="skills-container">
+    <div class="skill-card">
+      <h3>HTML, CSS, JavaScript</h3>
+      <p>Desarrollo de interfaces web modernas, responsivas y accesibles.</p>
+    </div>
+    <div class="skill-card">
+      <h3>PHP y MySQL</h3>
+      <p>Desarrollo backend eficiente y gestión de bases de datos estructuradas.</p>
+    </div>
+    <div class="skill-card">
+      <h3>Java</h3>
+      <p>Programación orientada a objetos y aplicaciones escalables y robustas.</p>
+    </div>
+    <div class="skill-card">
+      <h3>React & Frameworks</h3>
+      <p>Implementación de interfaces dinámicas y reutilizables con buenas prácticas.</p>
+    </div>
+    <div class="skill-card">
+      <h3>Git</h3>
+      <p>Control de versiones eficiente y colaboración en proyectos de desarrollo.</p>
+    </div>
+    <div class="skill-card">
+      <h3>Python</h3>
+      <p>Desarrollo de scripts, automatización y aplicaciones backend robustas.</p>
+    </div>
+  </div>
+</section>
+
+
+
+  <!-- Contacto -->
+<section id="contact">
+  <h2>Contacto y links</h2>
+  <div class="contact-info">
+    <div class="contact-item">
+      <span class="contact-label">Teléfono:</span>
+      <span class="contact-value">+34 608 07 65 02</span>
+    </div>
+    <div class="contact-item">
+      <span class="contact-label">Email:</span>
+      <span class="contact-value">carlostarrevillanueva0@gmail.com</span>
+    </div>
+    <div class="contact-item">
+      <span class="contact-label">GitHub:</span>
+      <span class="contact-value">
+        <a href="https://github.com/Carlostarvil" target="_blank">Carlostarvil</a> | 
+        <a href="https://github.com/Carlostarre" target="_blank">Carlostarre</a>
+      </span>
+    </div>
+    <div class="contact-item">
+      <span class="contact-label">LinkedIn:</span>
+      <span class="contact-value">
+        <a href="https://www.linkedin.com/in/carlostarre" target="_blank">Carlos Tarré</a>
+      </span>
+    </div>
+  </div>
+</section>
+
+
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Carlos Tarré Villanueva. Todos los derechos reservados.</p>
+  </footer>
+</body>
+</html>
